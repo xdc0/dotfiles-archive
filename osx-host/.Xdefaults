@@ -1,0 +1,4 @@
+URxvt.perl-ext-common: clipboard
+URxvt.keysym.1-c: perl:clipboard:copy
+URxvt.keysym.1-v: perl:clipboard:paste
+URxvt.clipboard.autocopy: true
