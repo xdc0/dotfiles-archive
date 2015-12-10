@@ -1,0 +1,2 @@
+Emacs.FontBackend: xft,x
+Emacs.font: Liberation Mono:size=14
