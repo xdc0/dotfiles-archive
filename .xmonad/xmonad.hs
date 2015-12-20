@@ -25,15 +25,17 @@ import Data.Monoid
 --------------------------------------------------------------------------------------------
 
 homeDir = "/home/xdc/.xmonad"
-myFont = "Dina:style=Regular:size=9"
+myFont = "Terminus:style=Regular:size=12"
 boxleftIcon = homeDir ++ "/icons/boxleft.xbm"
 
 myBGColor = "#0b0f18"
-myFGColor = "#6e9ff4" -- Main Color
+myActiveColor = "#9d9fa2"
+myInactiveColor = "#6c6f74"
+myHiddenColor = "#3b3e46"
 myBGUrgenColor = "#f4c36e"
 myFGUrgenColor = "#18130b"
 
-myFadeAmount = 0.8
+myFadeAmount = 0.9
 
 --------------------------------------------------------------------------------------------
 -- FADE INACTIVE WINDOWS
@@ -100,12 +102,12 @@ myLayoutHook = avoidStruts ( tall ||| Mirror tall ||| Full )
 myTaskbarHook h = dynamicLogWithPP $ myTaskbarPP { ppOutput = hPutStrLn h }
 
 myTaskbarPP = dzenPP
-    { ppCurrent          = dzenColor myBGColor myFGColor . wrap "[" "]"
-    , ppHidden           = dzenColor myFGColor myBGColor . wrap "[" "]"
-    , ppHiddenNoWindows  = dzenColor myFGColor myBGColor . wrap " " " "
-    , ppUrgent           = dzenColor myFGColor myBGUrgenColor . wrap "[" "]"
-    , ppTitle            = dzenColor myFGColor myBGColor . wrap ("^i(" ++ boxleftIcon ++ ")") " "
-    , ppLayout           = dzenColor myFGColor myBGColor . wrap "|| " " ||"
+    { ppCurrent          = dzenColor myActiveColor myBGColor . wrap " " " "
+    , ppHidden           = dzenColor myInactiveColor myBGColor . wrap " " " "
+    , ppHiddenNoWindows  = dzenColor myHiddenColor myBGColor . wrap " " " "
+    , ppUrgent           = dzenColor myFGUrgenColor myBGUrgenColor . wrap "[" "]"
+    , ppTitle            = dzenColor myActiveColor myBGColor . wrap " " " "
+    , ppLayout           = (\_ -> "")
     }
 
 --------------------------------------------------------------------------------------------
@@ -128,8 +130,8 @@ myStatusBarData = logCmd "cat /tmp/xmonad.status"
 myXPConfig = defaultXPConfig
 	{ font              = "xft:" ++ myFont
 	, bgColor           = myBGColor
-	, fgColor           = myFGColor
-	, bgHLight          = myFGColor
+	, fgColor           = myActiveColor
+	, bgHLight          = myActiveColor
 	, fgHLight          = myBGColor
 	, borderColor       = myBGColor
 	, promptBorderWidth = 1
@@ -145,11 +147,11 @@ myXPConfig = defaultXPConfig
 -- DZEN BARS DEFINITION
 --------------------------------------------------------------------------------------------
 
-myTaskBar   = "dzen2 -x '0' -w '1000' -ta 'l' -fn '" ++ myFont ++ "' -h '18'"
-    ++ " -bg '" ++ myBGColor ++ "' -fg '" ++ myFGColor ++ "'"
+myTaskBar   = "dzen2 -x '0' -w '1000' -ta 'l' -fn '" ++ myFont ++ "' -h '20'"
+    ++ " -bg '" ++ myBGColor ++ "' -fg '" ++ myActiveColor ++ "'"
 
-myStatusBar = "dzen2 -x '1000' -w '440' -ta 'r' -fn '" ++ myFont ++ "' -h '18'"
-    ++ " -bg '" ++ myBGColor ++ "' -fg '" ++ myFGColor ++ "'"
+myStatusBar = "dzen2 -x '1000' -w '990' -ta 'r' -fn '" ++ myFont ++ "' -h '20'"
+    ++ " -bg '" ++ myBGColor ++ "' -fg '" ++ myActiveColor ++ "'"
 
 --------------------------------------------------------------------------------------------
 -- MAIN                                                                                   --
@@ -162,7 +164,7 @@ main = do
 		{ terminal           = "/usr/bin/urxvtc" 
 		, modMask            = mod4Mask          --mod1Mask is Alt, mod4mask is winkey
                 , borderWidth        = 1
-                , focusedBorderColor = myFGColor
+                , focusedBorderColor = myActiveColor
                 , focusFollowsMouse  = False
                 , keys               = myKeys <+> keys defaultConfig
                 , startupHook        = myStartupHook
