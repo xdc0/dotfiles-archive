@@ -4,12 +4,16 @@ import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.UrgencyHook
 
 import XMonad.Prompt
 import XMonad.Prompt.Shell
 
 import qualified XMonad.Util.ExtensibleState as XS
+import qualified XMonad.StackSet as W
+
 import XMonad.Util.Loggers
+import XMonad.Util.NamedWindows
 import XMonad.Util.Run
 import XMonad.Util.Timer
 
@@ -21,12 +25,17 @@ import qualified Data.Map as M
 import Data.Monoid
 
 --------------------------------------------------------------------------------------------
+-- Custom datatypes
+--------------------------------------------------------------------------------------------
+
+data LibNotifyUrgencyHook = LibNotifyUrgencyHook deriving (Read, Show)
+
+--------------------------------------------------------------------------------------------
 -- LOOK AND FEEL
 --------------------------------------------------------------------------------------------
 
 homeDir = "/home/xdc/.xmonad"
 myFont = "Terminus:style=Regular:size=12"
-boxleftIcon = homeDir ++ "/icons/boxleft.xbm"
 
 myBGColor = "#0b0f18"
 myActiveColor = "#9d9fa2"
@@ -114,14 +123,11 @@ myTaskbarPP = dzenPP
 -- STATUSBAR
 --------------------------------------------------------------------------------------------
 
-myStatusBarHook h = dynamicLogWithPP dzenPP
+myStatusBarHook h = dynamicLogWithPP xmobarPP
     { ppOutput = hPutStrLn h
     , ppOrder  = \(_:_:_:x) -> x
     , ppSep    = " "
-    , ppExtras = [ myStatusBarData ]
     }
-
-myStatusBarData = logCmd "cat /tmp/xmonad.status"
 
 --------------------------------------------------------------------------------------------
 -- SHELL PROMPT
@@ -147,10 +153,18 @@ myXPConfig = defaultXPConfig
 -- DZEN BARS DEFINITION
 --------------------------------------------------------------------------------------------
 
-myTaskBar   = "dzen2 -x '0' -w '1000' -ta 'l' -fn '" ++ myFont ++ "' -h '20'"
-    ++ " -bg '" ++ myBGColor ++ "' -fg '" ++ myActiveColor ++ "'"
+instance UrgencyHook LibNotifyUrgencyHook where
+  urgencyHook LibNotifyUrgencyHook w = do
+    name <- getName w
+    Just idx <- fmap(W.findTag w) $ gets windowset
 
-myStatusBar = "dzen2 -x '1000' -w '990' -ta 'r' -fn '" ++ myFont ++ "' -h '20'"
+    safeSpawn "notify-send" [show name, "workspace " ++ idx]
+
+--------------------------------------------------------------------------------------------
+-- DZEN BARS DEFINITION
+--------------------------------------------------------------------------------------------
+
+myTaskBar   = "dzen2 -x '0' -w '1000' -ta 'l' -fn '" ++ myFont ++ "' -h '20'"
     ++ " -bg '" ++ myBGColor ++ "' -fg '" ++ myActiveColor ++ "'"
 
 --------------------------------------------------------------------------------------------
@@ -159,9 +173,10 @@ myStatusBar = "dzen2 -x '1000' -w '990' -ta 'r' -fn '" ++ myFont ++ "' -h '20'"
 
 main = do
     taskbar   <- spawnPipe myTaskBar
-    statusbar <- spawnPipe myStatusBar
-    xmonad defaultConfig
-		{ terminal           = "/usr/bin/urxvtc" 
+    statusbar <- spawnPipe "xmobar"
+    xmonad $ withUrgencyHook LibNotifyUrgencyHook
+           $ defaultConfig
+		{ terminal           = "/usr/bin/urxvt" 
 		, modMask            = mod4Mask          --mod1Mask is Alt, mod4mask is winkey
                 , borderWidth        = 1
                 , focusedBorderColor = myActiveColor

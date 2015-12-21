@@ -59,8 +59,8 @@ URxvt*color15 : #EEEEEC
 !emacs.color7  : #c0c0c0
 !emacs.color15 : #ffffff
 
-URxvt*font: xft:Terminus:pixelsize=18
-URxvt*boldFont: xft:Terminus:bold:pixelsize=18
+URxvt*font: xft:Terminus:pixelsize=14
+URxvt*boldFont: xft:Terminus:bold:pixelsize=14
 
 
 !urxvt scrolling options and cursor style:

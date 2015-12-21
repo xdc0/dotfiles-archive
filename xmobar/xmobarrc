@@ -1,0 +1,25 @@
+Config { font = "xft:Terminus:style=Regular:size=12"
+       , additionalFonts = []
+       , borderColor = "black"
+       , border = TopB
+       , bgColor = "#0b0f18"
+       , fgColor = "#9d9fa2"
+       , alpha = 255
+       , position = Static { xpos = 1000, ypos = 0, width = 920, height = 20 }
+       , textOffset = -1
+       , iconOffset = -1
+       , lowerOnStart = True
+       , pickBroadest = False
+       , persistent = False
+       , hideOnStart = False
+       , iconRoot = "$HOME/.xmonad/icons"
+       , allDesktops = True
+       , overrideRedirect = True
+       , commands = [ Run BatteryP ["BAT1"] ["-t", "<acstatus>: <left>% / <timeleft>",
+                                             "--", "-O", "CHR", "-i", "CHR", "-o", "BAT"] 200
+                    , Run Date "%a %b %_d %Y %H:%M" "date" 10
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "}{%battery% | %date%"
+       }
