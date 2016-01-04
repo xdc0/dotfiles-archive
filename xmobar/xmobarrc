@@ -17,9 +17,14 @@ Config { font = "xft:Terminus:style=Regular:size=12"
        , overrideRedirect = True
        , commands = [ Run BatteryP ["BAT1"] ["-t", "<acstatus>: <left>% / <timeleft>",
                                              "--", "-O", "CHR", "-i", "CHR", "-o", "BAT"] 200
-                    , Run Date "%a %b %_d %Y %H:%M" "date" 10
+                    , Run MBox [("Mail: ", "xdc", "green")] ["-d", "/var/mail", "-p", "| "] "mbox"
+                    , Run MPD ["-t", "<title>"] 10
+                    , Run CoreTemp ["-t", "Temp:<core0>|<core1>C",
+                                    "-L", "40", "-H", "70",
+                                    "-l", "lightblue", "-n", "gray90", "-h", "red"] 50
+                    , Run Date "%a %b %_d %Y %H:%M" "date" 30
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "}{%battery% | %date%"
+       , template = "}{%coretemp% | %mpd% %mbox% | %battery% | %date%"
        }

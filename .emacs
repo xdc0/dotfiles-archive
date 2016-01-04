@@ -15,7 +15,9 @@
    mode-require-final-newline nil
    version-control t)       ; use versioned backups
 
-(load-theme 'material t)
+(if (display-graphic-p)
+  (load-theme 'material t)
+  (load-theme 'manoj-dark))
 
 ;; Indentation
 

@@ -89,9 +89,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     ] where
 		killAndExit =
 			(spawn "/usr/bin/killall dzen2") <+>
+			(spawn "/usr/bin/killall xmobar") <+>
 			io (exitWith ExitSuccess)
 		killAndRestart =
 			(spawn "/usr/bin/killall dzen2") <+>
+			(spawn "/usr/bin/killall xmobar") <+>
 			(liftIO $ threadDelay 1000000) <+>
 			(restart "xmonad" True)
 
@@ -186,7 +188,6 @@ main = do
                 , handleEventHook    = myHandleEventHook
                 , layoutHook         = myLayoutHook
                 , manageHook         = myManageHook
-                , logHook            = myFadeInactiveHook
-                                       <+> myTaskbarHook taskbar 
+                , logHook            = myTaskbarHook taskbar 
                                        <+> myStatusBarHook statusbar
 		}
