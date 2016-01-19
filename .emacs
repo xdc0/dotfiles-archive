@@ -35,6 +35,18 @@
 (column-number-mode t)
 (linum-mode)
 (projectile-global-mode)
+(yas-global-mode 1)
+
+;; autocomplete
+;;; should be loaded after yasnippet so that they can work together
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
+;;; set the trigger key so that it can work together with yasnippet on tab key,
+;;; if the word exists in yasnippet, pressing tab will cause yasnippet to
+;;; activate, otherwise, auto-complete will
+(ac-set-trigger-key "TAB")
+(ac-set-trigger-key "<tab>")
 
 ;; Key bindings
 
@@ -48,11 +60,15 @@
 (evil-mode 1)
 
 (define-key evil-normal-state-map (kbd "C-p") 'projectile-find-file)
-(define-key evil-insert-state-map (kbd "<tab>") 'hippie-expand)
 (evil-set-initial-state 'git-commit-mode 'insert)
 (evil-set-initial-state 'magit-popup-mode 'insert)
 
 ; Modes hooks
+
+(add-hook 'js-mode
+          '(lambda()
+             (js2-minor-mode)
+             (tern-mode t)))
 
 (add-hook 'go-mode-hook
           '(lambda()
@@ -61,14 +77,22 @@
 
 (add-hook 'js2-mode-hook
           '(lambda()
-             (setq tab-width 4)
-             (setq indent-tabs-mode nil)))
+             (setq tab-width 2)
+             (setq indent-tabs-mode nil)
+             (tern-mode t)
+             (ac-js2-mode t)))
 
 (add-hook 'ruby-mode
           '(lambda()
              (setq tab-width 2)
              (setq indent-tabs-mode nil)))
 
+
+;; Tern
+(eval-after-load 'tern
+  '(progn
+     (require 'tern-auto-complete)
+     (tern-ac-setup)))
 
 ;; Flycheck
 
@@ -89,8 +113,11 @@
 
 ;; javascript
 
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+
 (setq js2-skip-preprocessor-directives t)
+(setq js2-highlight-level 3)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
