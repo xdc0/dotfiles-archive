@@ -5,6 +5,12 @@
 (setq inhibit-startup-message t)
 (blink-cursor-mode -1)
 
+;; (setq mac-command-modifier 'meta)
+;; (setq mac-option-modifier nil)
+
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+(setq exec-path (append exec-path '("/usr/local/bin")))
+
 (setq
    backup-by-copying t      ; don't clobber symlinks
    backup-directory-alist
@@ -19,10 +25,20 @@
   (load-theme 'material t)
   (load-theme 'manoj-dark))
 
+;; Powerline
+(require 'powerline-evil)
+(powerline-evil-center-color-theme)
+
 ;; Indentation
 
 (setq-default indent-tabs-mode nil)
-(setq tab-width 4)
+(setq tab-width 2)
+(setq js2-basic-offset 2)
+
+(defvaralias 'c-basic-offset 'tab-width)
+(defvaralias 'cperl-indent-level 'tab-width)
+(setq js-indent-level 'tab-width)
+
 (define-key global-map (kbd "RET") 'newline-and-indent)
 (setq ring-bell-function #'ignore)
 
@@ -33,7 +49,7 @@
 ;; General modes
 
 (column-number-mode t)
-(linum-mode)
+(global-linum-mode 1)
 (projectile-global-mode)
 (yas-global-mode 1)
 
@@ -54,12 +70,22 @@
 (global-set-key  (kbd "<f5>") 'magit-status)
 (global-set-key  (kbd "C-c a") 'org-agenda)
 
+;; org mode states
+
+(setq org-todo-keyword-faces
+      '(("TODO" . org-warning) ("INPROGRESS" . "yellow")
+        ("PR" . "yellow") ("QA" . "orange") ("DONE" . org-done)
+        ("DROPPED" . "blue")))
+
 ;; Evil mode stuff
 
 (require 'evil)
 (evil-mode 1)
 
 (define-key evil-normal-state-map (kbd "C-p") 'projectile-find-file)
+(define-key evil-normal-state-map (kbd "M-.") 'tern-find-definition)
+(define-key evil-normal-state-map (kbd "M-,") 'tern-pop-find-definition)
+
 (evil-set-initial-state 'git-commit-mode 'insert)
 (evil-set-initial-state 'magit-popup-mode 'insert)
 
@@ -67,18 +93,21 @@
 
 (add-hook 'js-mode
           '(lambda()
+             (setq indent-tabs-mode nil)
+             (setq js-indent-level 2)
              (js2-minor-mode)
-             (tern-mode t)))
+             (tern-mode t)
+             (ac-js2-mode t)))
 
 (add-hook 'go-mode-hook
           '(lambda()
-             (setq tab-width 4)
+             (setq tab-width 2)
              (setq indent-tabs-mode t)))
 
 (add-hook 'js2-mode-hook
           '(lambda()
-             (setq tab-width 2)
              (setq indent-tabs-mode nil)
+             (setq js-indent-level 2)
              (tern-mode t)
              (ac-js2-mode t)))
 
@@ -130,10 +159,10 @@
    (vector "#212121" "#B71C1C" "#558b2f" "#FFA000" "#2196f3" "#4527A0" "#00796b" "#FAFAFA"))
  '(custom-safe-themes
    (quote
-    ("0aa12caf6127772c1a38f7966de8258e7a0651fb6f7220d0bbb3a0232fba967f" "870a63a25a2756074e53e5ee28f3f890332ddc21f9e87d583c5387285e882099" "3cd28471e80be3bd2657ca3f03fbb2884ab669662271794360866ab60b6cb6e6" "72a81c54c97b9e5efcc3ea214382615649ebb539cb4f2fe3a46cd12af72c7607" "8fed5e4b89cf69107d524c4b91b4a4c35bcf1b3563d5f306608f0c48f580fdf8" "96998f6f11ef9f551b427b8853d947a7857ea5a578c75aa9c4e7c73fe04d10b4" "58c6711a3b568437bab07a30385d34aacf64156cc5137ea20e799984f4227265" "9b59e147dbbde5e638ea1cde5ec0a358d5f269d27bd2b893a0947c4a867e14c1" "0c29db826418061b40564e3351194a3d4a125d182c6ee5178c237a7364f0ff12" "3d5ef3d7ed58c9ad321f05360ad8a6b24585b9c49abcee67bdcbb0fe583a6950" "726dd9a188747664fbbff1cd9ab3c29a3f690a7b861f6e6a1c64462b64b306de" "83e584d74b0faea99a414a06dae12f11cd3176fdd4eba6674422539951bcfaa8" "28be714e94b2ddbfd1addf8afba2d083c49748a6afbdc11d918893859f9d69c6" "7feeed063855b06836e0262f77f5c6d3f415159a98a9676d549bfeb6c49637c4" "77bd459212c0176bdf63c1904c4ba20fce015f730f0343776a1a14432de80990" "c1fb68aa00235766461c7e31ecfc759aa2dd905899ae6d95097061faeb72f9ee" "75c9f0b0499ecdd0c856939a5de052742d85af81814e84faa666522c2bba7e85" default)))
+    ("f688f52498f2d02dda635d873c0b1ce661201173c6b0e4c3e452d45d846fe2d8" "2a66758b2eb4b90050b1359d1c6c977c6d66c21e49573b88f9cbaaae0204148c" "0aa12caf6127772c1a38f7966de8258e7a0651fb6f7220d0bbb3a0232fba967f" "870a63a25a2756074e53e5ee28f3f890332ddc21f9e87d583c5387285e882099" "3cd28471e80be3bd2657ca3f03fbb2884ab669662271794360866ab60b6cb6e6" "72a81c54c97b9e5efcc3ea214382615649ebb539cb4f2fe3a46cd12af72c7607" "8fed5e4b89cf69107d524c4b91b4a4c35bcf1b3563d5f306608f0c48f580fdf8" "96998f6f11ef9f551b427b8853d947a7857ea5a578c75aa9c4e7c73fe04d10b4" "58c6711a3b568437bab07a30385d34aacf64156cc5137ea20e799984f4227265" "9b59e147dbbde5e638ea1cde5ec0a358d5f269d27bd2b893a0947c4a867e14c1" "0c29db826418061b40564e3351194a3d4a125d182c6ee5178c237a7364f0ff12" "3d5ef3d7ed58c9ad321f05360ad8a6b24585b9c49abcee67bdcbb0fe583a6950" "726dd9a188747664fbbff1cd9ab3c29a3f690a7b861f6e6a1c64462b64b306de" "83e584d74b0faea99a414a06dae12f11cd3176fdd4eba6674422539951bcfaa8" "28be714e94b2ddbfd1addf8afba2d083c49748a6afbdc11d918893859f9d69c6" "7feeed063855b06836e0262f77f5c6d3f415159a98a9676d549bfeb6c49637c4" "77bd459212c0176bdf63c1904c4ba20fce015f730f0343776a1a14432de80990" "c1fb68aa00235766461c7e31ecfc759aa2dd905899ae6d95097061faeb72f9ee" "75c9f0b0499ecdd0c856939a5de052742d85af81814e84faa666522c2bba7e85" default)))
  '(fci-rule-color "#ECEFF1")
  '(hl-sexp-background-color "#efebe9")
- '(js2-basic-offset 4)
+ '(js2-basic-offset 2)
  '(magit-commit-arguments nil)
  '(magit-diff-arguments (quote ("--no-ext-diff")))
  '(vc-annotate-background nil)
@@ -164,3 +193,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'erase-buffer 'disabled nil)
