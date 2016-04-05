@@ -26,5 +26,5 @@ Config { font = "xft:Terminus:style=Regular:size=12"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "}{%coretemp% | %mpd% %mbox% | %battery% | %date%"
+       , template = "}{%mpd% %mbox% | %battery% | %date%"
        }
