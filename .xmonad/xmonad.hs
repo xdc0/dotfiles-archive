@@ -4,6 +4,7 @@ import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.UrgencyHook
 
 import XMonad.Prompt
@@ -117,7 +118,7 @@ myTaskbarPP = dzenPP
     , ppHidden           = dzenColor myInactiveColor myBGColor . wrap " " " "
     , ppHiddenNoWindows  = dzenColor myHiddenColor myBGColor . wrap " " " "
     , ppUrgent           = dzenColor myFGUrgenColor myBGUrgenColor . wrap "[" "]"
-    , ppTitle            = dzenColor myActiveColor myBGColor . wrap " " " "
+    , ppTitle            = dzenColor myActiveColor myBGColor . wrap " --->" "<--- "
     , ppLayout           = (\_ -> "")
     }
 
@@ -143,7 +144,7 @@ myXPConfig = defaultXPConfig
 	, fgHLight          = myBGColor
 	, borderColor       = myBGColor
 	, promptBorderWidth = 1
-	, height            = 18
+	, height            = 20
 	, position          = Top
 	, historySize       = 100
 	, historyFilter     = deleteConsecutive
@@ -166,7 +167,7 @@ instance UrgencyHook LibNotifyUrgencyHook where
 -- DZEN BARS DEFINITION
 --------------------------------------------------------------------------------------------
 
-myTaskBar   = "dzen2 -x '0' -w '1000' -ta 'l' -fn '" ++ myFont ++ "' -h '20'"
+myTaskBar   = "dzen2 -x '0' -w '1500' -ta 'l' -fn '" ++ myFont ++ "' -h '20'"
     ++ " -bg '" ++ myBGColor ++ "' -fg '" ++ myActiveColor ++ "'"
 
 --------------------------------------------------------------------------------------------
@@ -187,7 +188,7 @@ main = do
                 , startupHook        = myStartupHook
                 , handleEventHook    = myHandleEventHook
                 , layoutHook         = myLayoutHook
-                , manageHook         = myManageHook
+                , manageHook         = manageHook defaultConfig <+> myManageHook
                 , logHook            = myTaskbarHook taskbar 
                                        <+> myStatusBarHook statusbar
 		}

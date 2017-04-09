@@ -5,7 +5,7 @@ Config { font = "xft:Terminus:style=Regular:size=12"
        , bgColor = "#0b0f18"
        , fgColor = "#9d9fa2"
        , alpha = 255
-       , position = Static { xpos = 1000, ypos = 0, width = 920, height = 20 }
+       , position = Static { xpos = 1500, ypos = 0, width = 2340, height = 20 }
        , textOffset = -1
        , iconOffset = -1
        , lowerOnStart = True
