@@ -33,6 +33,11 @@
   "Override js2-mode undeclared vars feature, I use eslint and jshint anyway."
   (lambda ()))
 
+;; I need to figure out how to make this configurable per project.
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+    '(javascript-eslint)))
+
 (add-to-list 'auto-mode-alist '("\\.js\\'"    . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.pac\\'"   . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'"   . js2-jsx-mode))
