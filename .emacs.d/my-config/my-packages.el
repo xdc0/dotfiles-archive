@@ -12,13 +12,16 @@
 (defvar my-packages '(ac-js2
                       alchemist
                       auto-complete
+                      color-theme-sanityinc-tomorrow
                       company
                       company-tern
                       clojure-mode
                       evil
+                      evil-magit
                       flycheck
                       haskell-mode
                       helm
+                      helm-ag
                       helm-projectile
                       js2-mode
                       magit
@@ -26,6 +29,7 @@
                       powerline
                       powerline-evil
                       projectile
+                      rjsx-mode
                       tern
                       web-mode
                       yasnippet)

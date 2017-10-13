@@ -28,19 +28,19 @@
 
 ;; Javascript configs
 (require 'js2-mode)
+(setq js2-basic-offset 2)
 
 (defun js2-highlight-undeclared-vars ()
   "Override js2-mode undeclared vars feature, I use eslint and jshint anyway."
   (lambda ()))
 
 ;; I need to figure out how to make this configurable per project.
-(setq-default flycheck-disabled-checkers
-  (append flycheck-disabled-checkers
-    '(javascript-eslint)))
+;; (setq-default flycheck-disabled-checkers
+;;  (append flycheck-disabled-checkers
+;;    '(javascript-eslint)))
 
 (add-to-list 'auto-mode-alist '("\\.js\\'"    . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.pac\\'"   . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx\\'"   . js2-jsx-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
 (add-hook 'js2-mode-hook
