@@ -19,5 +19,9 @@
 (require 'my-keybindings)
 (require 'my-org)
 (require 'my-programming)
+(require 'my-aspell)
+
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
 
 ;;; init.el ends here
