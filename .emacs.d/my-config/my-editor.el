@@ -46,11 +46,5 @@
 ;; (require 'powerline-evil)
 ;; (powerline-evil-center-color-theme)
 
-;; Color lines longer than 100 lines.
-(require 'whitespace)
-(setq whitespace-line-column 100)
-(setq whitespace-style '(face empty tabs lines-tail trailing))
-(global-whitespace-mode t)
-
 (provide 'my-editor)
 ;;; my-editor.el ends here
