@@ -4,7 +4,7 @@
 
 ;; font
 (defvar my-font "CamingoCode:weight=normal:slant=normal:width=normal:spacing=100:scalable=true:pixelsize=")
-(defvar my-font-size "14")
+(defvar my-font-size "16")
 
 (set-face-attribute 'default t :font (concat my-font my-font-size))
 (set-frame-font (concat my-font my-font-size))
