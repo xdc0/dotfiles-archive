@@ -10,6 +10,7 @@
 (package-initialize)
 
 (defvar my-packages '(ac-js2
+                      afternoon-theme
                       alchemist
                       auto-complete
                       color-theme-sanityinc-tomorrow

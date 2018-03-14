@@ -20,7 +20,7 @@
 (setq scroll-step 1)
 
 ;; preferred theme
-(load-theme 'andreas t)
+(load-theme 'afternoon t)
 
 ;; Show cursor position at the bottom and line numbers.
 (column-number-mode t)
