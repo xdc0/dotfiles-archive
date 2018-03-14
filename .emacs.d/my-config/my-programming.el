@@ -18,9 +18,8 @@
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-minimum-prefix-length 1)
 (with-eval-after-load 'company
-  (lambda ()
     (add-to-list 'company-backends 'company-tern)
-    (add-to-list 'company-backends 'company-flow)))
+    (add-to-list 'company-backends 'company-flow))
 
 ;; Display flycheck errors at the bottom on a small-ish window
 (add-to-list 'display-buffer-alist
