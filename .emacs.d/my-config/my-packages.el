@@ -15,10 +15,12 @@
                       auto-complete
                       color-theme-sanityinc-tomorrow
                       company
+                      company-flow
                       company-tern
                       clojure-mode
                       evil
                       evil-magit
+                      flow-minor-mode
                       flycheck
                       flycheck-flow
                       haskell-mode
