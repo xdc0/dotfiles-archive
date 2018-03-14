@@ -19,6 +19,7 @@
                       evil
                       evil-magit
                       flycheck
+                      flycheck-flow
                       haskell-mode
                       helm
                       helm-ag
@@ -32,6 +33,7 @@
                       rjsx-mode
                       tern
                       web-mode
+                      yaml-mode
                       yasnippet)
   "Packages I use.")
 
