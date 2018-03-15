@@ -13,6 +13,8 @@
 
 (add-to-list 'load-path (concat user-emacs-directory "my-config"))
 
+(setq frame-background-mode 'dark)
+
 (require 'my-packages)
 (require 'my-environment)
 (require 'my-editor)
