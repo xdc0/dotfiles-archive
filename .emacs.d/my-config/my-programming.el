@@ -10,7 +10,7 @@
 
 ;; Enable flycheck globally
 (require 'flycheck)
-(require 'flycheck-flow)
+;; (require 'flycheck-flow)
 (global-flycheck-mode)
 
 ;; Company mode
@@ -18,8 +18,8 @@
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-minimum-prefix-length 1)
 (with-eval-after-load 'company
-    (add-to-list 'company-backends 'company-tern)
-    (add-to-list 'company-backends 'company-flow))
+    (add-to-list 'company-backends 'company-tern))
+;;    (add-to-list 'company-backends 'company-flow))
 
 ;; Display flycheck errors at the bottom on a small-ish window
 (add-to-list 'display-buffer-alist
@@ -38,10 +38,10 @@
 
 ;; flow
 
-(with-eval-after-load 'flycheck
-  (flycheck-add-mode 'javascript-flow 'flow-minor-mode)
-  (flycheck-add-mode 'javascript-eslint 'flow-minor-mode)
-  (flycheck-add-next-checker 'javascript-flow 'javascript-eslint))
+;; (with-eval-after-load 'flycheck
+;;  (flycheck-add-mode 'javascript-flow 'flow-minor-mode)
+;;  (flycheck-add-mode 'javascript-eslint 'flow-minor-mode)
+;;  (flycheck-add-next-checker 'javascript-flow 'javascript-eslint))
 
 (defun js2-highlight-undeclared-vars ()
   "Override js2-mode undeclared vars feature, I use eslint and jshint anyway."
@@ -58,8 +58,8 @@
 
 (add-hook 'js2-mode-hook
           '(lambda()
-             (tern-mode t)
-             (flow-minor-mode)))
+             (tern-mode t)))
+;;             (flow-minor-mode)))
 
 (require 'rjsx-mode)
 
