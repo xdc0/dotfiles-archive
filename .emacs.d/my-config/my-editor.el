@@ -3,8 +3,17 @@
 ;;; Code:
 
 ;; font
-(defvar my-font "CamingoCode:weight=normal:slant=normal:width=normal:spacing=100:scalable=true:pixelsize=")
+(defvar my-font "Andale Mono:weight=normal:slant=normal:width=normal:spacing=100:scalable=true:pixelsize=")
 (defvar my-font-size "16")
+
+;; Compatibility when launching from terminal
+(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(setq locale-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8-unix)
+(set-keyboard-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 
 (set-face-attribute 'default t :font (concat my-font my-font-size))
 (set-frame-font (concat my-font my-font-size))
@@ -20,15 +29,13 @@
 (setq scroll-step 1)
 
 ;; preferred theme
-(load-theme 'afternoon t)
+(load-theme 'sanityinc-tomorrow-eighties t)
 
 ;; Show cursor position at the bottom and line numbers.
 (column-number-mode t)
 
 ;; Editor line number configuration and initialization
-(global-linum-mode 1)
-(defvar linum-format)
-(setq linum-format "%4d ")
+(global-display-line-numbers-mode)
 
 ;; Remove menus
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
