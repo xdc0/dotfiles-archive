@@ -5,6 +5,7 @@
 (global-set-key  (kbd "<f2>") 'helm-ag-project-root)
 (global-set-key  (kbd "<f5>") 'magit-status)
 (global-set-key  (kbd "C-c a") 'org-agenda)
+(global-set-key  (kbd "<f7>") 'org-jira-progress-issue)
 
 (add-to-list 'load-path "~/contrib/chuym/dotfiles/.emacs.d")
 ;;; evil-only keybindings

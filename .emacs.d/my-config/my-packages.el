@@ -30,6 +30,7 @@
                       js2-mode
                       magit
                       mustard-theme
+                      org-jira
                       powerline
                       powerline-evil
                       projectile
