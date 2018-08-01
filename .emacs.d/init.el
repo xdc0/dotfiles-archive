@@ -7,8 +7,6 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-(package-initialize)
-
 (setq load-prefer-newer t)
 
 (add-to-list 'load-path (concat user-emacs-directory "my-config"))

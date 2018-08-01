@@ -5,6 +5,8 @@
 (require 'org)
 (require 'org-jira)
 (setq jiralib-url "https://mixmaxhq.atlassian.net")
+(setq org-jira-keywords-to-jira-status-alist
+      '(("In Progress" . "INPROGRESS")))
 
 (setq org-todo-keyword-faces
       '(("TODO" . org-warning) ("INPROGRESS" . "yellow")

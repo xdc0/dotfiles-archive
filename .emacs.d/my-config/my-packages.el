@@ -5,9 +5,7 @@
 (require 'package)
 
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/"))
-
-(package-initialize)
+             '("melpa" . "https://melpa.org/packages/"))
 
 (defvar my-packages '(ac-js2
                       afternoon-theme
