@@ -27,6 +27,7 @@
                       helm-projectile
                       js2-mode
                       magit
+                      magithub
                       mustard-theme
                       org-jira
                       powerline
