@@ -3,7 +3,6 @@
 ;;; Code:
 
 (require 'package)
-
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 
@@ -18,6 +17,7 @@
                       clojure-mode
                       evil
                       evil-magit
+                      exec-path-from-shell
                       ;;flow-minor-mode
                       flycheck
                       ;;flycheck-flow
