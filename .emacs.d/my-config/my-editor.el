@@ -3,7 +3,7 @@
 ;;; Code:
 
 ;; font
-(defvar my-font "Andale Mono:weight=normal:slant=normal:width=normal:spacing=100:scalable=true:pixelsize=")
+(defvar my-font "DejaVu Sans Mono:weight=normal:slant=normal:width=normal:spacing=100:scalable=true:pixelsize=")
 (defvar my-font-size "16")
 
 ;; Compatibility when launching from terminal
