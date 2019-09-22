@@ -5,6 +5,7 @@
 .xmonad/xmonad-x86_64-linux
 
 .emacs.d/custom.el
+.emacs.d/magithub
 .emacs.d/projectile.cache
 .emacs.d/request
 .emacs.d/transient
