@@ -107,6 +107,15 @@ set $ws5 "5:im"
 set $ws6 "6:misc"
 set $ws7 "7:min"
 
+workspace $ws1 output DP2 primary
+workspace $ws2 output DP2 primary
+workspace $ws5 output DP2 primary
+
+workspace $ws3 output HDMI1 primary
+workspace $ws4 output HDMI1 primary
+workspace $ws6 output HDMI1 primary
+workspace $ws7 output HDMI1 primary
+
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2

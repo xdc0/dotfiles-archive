@@ -3,6 +3,7 @@
 ;;; Code:
 
 (require 'package)
+(package-initialize)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 
@@ -12,15 +13,12 @@
                       auto-complete
                       color-theme-sanityinc-tomorrow
                       company
-                      ;;company-flow
                       company-tern
                       clojure-mode
                       evil
                       evil-magit
                       exec-path-from-shell
-                      ;;flow-minor-mode
                       flycheck
-                      ;;flycheck-flow
                       haskell-mode
                       helm
                       helm-ag
