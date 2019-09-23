@@ -17,12 +17,13 @@
       '((sequence "TODO(t)" "INPROGRESS(i)" "PR(p)" "STAGING(s)" "|" "DONE(d)")))
 
 (setq org-agenda-files (list
-                        (concat org-directory "/work.org")
-                        (concat org-jira-working-dir "/MX.org")))
+                        (concat org-directory "/work.org")))
 
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+datetree (concat org-directory "/work.org") "Tasks")
-         "* TODO %?\n  %i\n  %a")))
+      '(("t" "Todo" entry (file+datetree "~/org/work.org" "Tasks")
+         "* TODO %?\nSCHEDULED: %t\n  %i\n  %a")
+        ("j" "Journal" entry (file+datetree "~/org/work.org" "Journal")
+         "* %?\n  %i\n  %a")))
 
 (provide 'my-org)
 ;;; my-org.el ends here
