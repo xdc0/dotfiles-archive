@@ -32,7 +32,7 @@
                       powerline-evil
                       projectile
                       rjsx-mode
-                      tern
+                      tide
                       web-mode
                       yaml-mode
                       yasnippet)
