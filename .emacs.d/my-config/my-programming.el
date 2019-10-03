@@ -10,7 +10,6 @@
 
 ;; Enable flycheck globally
 (require 'flycheck)
-;; (require 'flycheck-flow)
 (global-flycheck-mode)
 
 ;; Company mode
@@ -19,7 +18,6 @@
 (setq company-minimum-prefix-length 1)
 (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-tern))
-;;    (add-to-list 'company-backends 'company-flow))
 
 ;; Display flycheck errors at the bottom on a small-ish window
 (add-to-list 'display-buffer-alist
@@ -36,13 +34,6 @@
 (setq js2-mode-show-parse-errors nil)
 (setq js2-mode-show-strict-warnings nil)
 
-;; flow
-
-;; (with-eval-after-load 'flycheck
-;;  (flycheck-add-mode 'javascript-flow 'flow-minor-mode)
-;;  (flycheck-add-mode 'javascript-eslint 'flow-minor-mode)
-;;  (flycheck-add-next-checker 'javascript-flow 'javascript-eslint))
-
 (defun js2-highlight-undeclared-vars ()
   "Override js2-mode undeclared vars feature, I use eslint and jshint anyway."
   (lambda ()))
@@ -55,11 +46,6 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'"    . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.pac\\'"   . js2-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
-
-(add-hook 'js2-mode-hook
-          '(lambda()
-             (tern-mode t)))
-;;             (flow-minor-mode)))
 
 (require 'rjsx-mode)
 
