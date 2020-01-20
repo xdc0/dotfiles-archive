@@ -156,7 +156,7 @@ label-discharging-padding = 2
 
 ; Full label
 label-full =  100%
-label-full-foreground = ${colors.foreground}
+label-full-foreground = ${colors.green}
 label-full-padding = 2
 
 [module/cpu]

@@ -43,6 +43,18 @@
 ;;  (append flycheck-disabled-checkers
 ;;    '(javascript-eslint)))
 
+;; Typescript stuff
+
+(use-package tide
+  :ensure t
+  :after (typescript-mode company flycheck)
+  :hook ((typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)))
+
+;; aligns annotation to the right hand side
+(setq company-tooltip-align-annotations t)
+
+(add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'"    . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.pac\\'"   . js2-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
@@ -53,6 +65,8 @@
   (define-key rjsx-mode-map "<" nil)
   (define-key rjsx-mode-map (kbd "C-d") nil)
   (define-key rjsx-mode-map ">" nil))
+
+(add-hook 'ruby-mode-hook #'rubocop-mode)
 
 (provide 'my-programming)
 

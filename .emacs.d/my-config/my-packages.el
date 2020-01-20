@@ -33,6 +33,7 @@
                       projectile
                       rjsx-mode
                       tide
+                      use-package
                       web-mode
                       yaml-mode
                       yasnippet)

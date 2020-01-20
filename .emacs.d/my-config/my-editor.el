@@ -3,7 +3,7 @@
 ;;; Code:
 
 ;; font
-(defvar my-font "DejaVu Sans Mono:weight=normal:slant=normal:width=normal:spacing=100:scalable=true:pixelsize=")
+(defvar my-font "JetBrains Mono:weight=normal:slant=normal:width=normal:spacing=100:scalable=true:pixelsize=")
 (defvar my-font-size "16")
 
 ;; Compatibility when launching from terminal
@@ -48,6 +48,8 @@
 
 ;; magit stuff
 (require 'evil-magit)
+
+(evil-matchit-mode)
 
 ;; Powerline
 ;; (require 'powerline-evil)
