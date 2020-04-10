@@ -13,7 +13,7 @@
                       auto-complete
                       color-theme-sanityinc-tomorrow
                       company
-                      company-tern
+                      company-lsp
                       clojure-mode
                       evil
                       evil-magit
@@ -24,6 +24,7 @@
                       helm-ag
                       helm-projectile
                       js2-mode
+                      lsp-mode
                       magit
                       magithub
                       mustard-theme
@@ -31,6 +32,7 @@
                       powerline
                       powerline-evil
                       projectile
+                      rubocop
                       rjsx-mode
                       tide
                       use-package

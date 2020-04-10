@@ -6,6 +6,12 @@
 (defvar my-font "JetBrains Mono:weight=normal:slant=normal:width=normal:spacing=100:scalable=true:pixelsize=")
 (defvar my-font-size "16")
 
+;; Powerline
+(require 'powerline)
+(powerline-default-theme)
+;; (setq sml/theme 'dark)
+;; (sml/setup t)
+
 ;; Compatibility when launching from terminal
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)

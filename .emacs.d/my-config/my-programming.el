@@ -12,12 +12,16 @@
 (require 'flycheck)
 (global-flycheck-mode)
 
+;; LSP
+(require 'lsp-mode)
+(setq lsp-enable-indentation nil)
+
 ;; Company mode
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-minimum-prefix-length 1)
 (with-eval-after-load 'company
-    (add-to-list 'company-backends 'company-tern))
+  (add-to-list 'company-backends 'company-lsp))
 
 ;; Display flycheck errors at the bottom on a small-ish window
 (add-to-list 'display-buffer-alist
@@ -67,6 +71,7 @@
   (define-key rjsx-mode-map ">" nil))
 
 (add-hook 'ruby-mode-hook #'rubocop-mode)
+(add-hook 'ruby-mode-hook #'lsp)
 
 (provide 'my-programming)
 
