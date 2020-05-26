@@ -59,8 +59,8 @@ URxvt*color15 : #EEEEEC
 !emacs.color7  : #c0c0c0
 !emacs.color15 : #ffffff
 
-URxvt*font: xft:DejaVu Sans Mono:pixelsize=15
-URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=15
+URxvt*font: xft:JetBrains Mono:pixelsize=24
+URxvt*boldFont: xft:JetBrains Mono:bold:pixelsize=24
 
 
 !urxvt scrolling options and cursor style:
