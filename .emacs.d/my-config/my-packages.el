@@ -3,12 +3,13 @@
 ;;; Code:
 
 (require 'package)
-(package-initialize)
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
 
 (defvar my-packages '(ac-js2
-                      afternoon-theme
+		      afternoon-theme
                       alchemist
                       auto-complete
                       color-theme-sanityinc-tomorrow
@@ -42,9 +43,8 @@
   "Packages I use.")
 
 (defun install-my-packages ()
-  "Install packages defined in my-packages."
-  (unless package-archive-contents
-    (package-refresh-contents))
+ "Install packages defined in my-packages."
+  (package-refresh-contents)
 
   (dolist (package my-packages)
     (unless (package-installed-p package)

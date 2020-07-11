@@ -3,8 +3,7 @@
 ;;; Code:
 
 ;; font
-(defvar my-font "JetBrains Mono:weight=normal:slant=normal:width=normal:spacing=100:scalable=true:pixelsize=")
-(defvar my-font-size "16")
+(defvar my-font "JetBrains Mono:weight=normal:slant=normal:weight=normal:height=128:width=normal:scalable=true")
 
 ;; Powerline
 (require 'powerline)
@@ -21,8 +20,8 @@
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-(set-face-attribute 'default t :font (concat my-font my-font-size))
-(set-frame-font (concat my-font my-font-size))
+(set-face-attribute 'default t :font my-font)
+(set-frame-font my-font)
 
 ;; Indentation configuration and behavior
 (setq-default indent-tabs-mode nil)
