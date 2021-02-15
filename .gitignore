@@ -10,3 +10,5 @@
 .emacs.d/request
 .emacs.d/transient
 .emacs.d/bookmarks
+.emacs.d/.cache
+.emacs.d/.lsp-session*

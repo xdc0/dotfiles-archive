@@ -14,10 +14,10 @@
                       auto-complete
                       color-theme-sanityinc-tomorrow
                       company
-                      company-lsp
                       clojure-mode
                       evil
-                      evil-magit
+                      evil-collection
+                      evil-matchit
                       exec-path-from-shell
                       flycheck
                       haskell-mode

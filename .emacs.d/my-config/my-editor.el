@@ -48,13 +48,24 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 ;; Initialize evil and for magit too
+(setq evil-want-keybinding nil)
 (require 'evil)
 (evil-mode 1)
 
 ;; magit stuff
-(require 'evil-magit)
+(require 'evil-collection)
+(evil-collection-init)
 
 (evil-matchit-mode)
+
+;; python
+(use-package lsp-python-ms
+  :ensure t
+  :init (setq lsp-python-ms-auto-install-server t)
+  :config (setq lsp-python-ms-extra-paths ["$HOME/.local/lib/python3.8/site-packages"])
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-python-ms)
+                          (lsp))))  ; or lsp-deferred
 
 ;; Powerline
 ;; (require 'powerline-evil)
