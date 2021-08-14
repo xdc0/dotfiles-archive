@@ -3,7 +3,8 @@
 ;;; Code:
 
 ;; font
-(defvar my-font "JetBrains Mono:weight=normal:slant=normal:weight=normal:height=128:width=normal:scalable=true")
+(custom-set-faces
+ '(default ((t (:family "JetBrains Mono" :foundry "JB" :slant normal :weight semi-bold :height 143 :width normal)))))
 
 ;; Powerline
 (require 'powerline)
@@ -20,9 +21,6 @@
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-(set-face-attribute 'default t :font my-font)
-(set-frame-font my-font)
-
 ;; Indentation configuration and behavior
 (setq-default indent-tabs-mode nil)
 (setq tab-width 2)
@@ -34,7 +32,7 @@
 (setq scroll-step 1)
 
 ;; preferred theme
-(load-theme 'sanityinc-tomorrow-eighties t)
+(load-theme 'sanityinc-tomorrow-day t)
 
 ;; Show cursor position at the bottom and line numbers.
 (column-number-mode t)

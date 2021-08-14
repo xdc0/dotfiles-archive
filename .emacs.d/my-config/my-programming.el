@@ -3,7 +3,7 @@
 ;;; Code:
 
 ;;; projectile with helm
-(projectile-global-mode)
+(projectile-mode)
 (defvar projectile-completion-system)
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)

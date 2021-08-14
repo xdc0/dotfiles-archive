@@ -24,7 +24,6 @@
                       helm
                       helm-ag
                       helm-projectile
-                      js2-mode
                       lsp-mode
                       magit
                       magithub
