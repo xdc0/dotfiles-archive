@@ -32,20 +32,9 @@
                (side            . bottom)
                (window-height   . 0.12)))
 
-;; Javascript configs
-(require 'js2-mode)
-(setq js2-basic-offset 2)
-(setq js2-mode-show-parse-errors nil)
-(setq js2-mode-show-strict-warnings nil)
+;; Javascript stuff
 
-(defun js2-highlight-undeclared-vars ()
-  "Override js2-mode undeclared vars feature, I use eslint and jshint anyway."
-  (lambda ()))
-
-;; I need to figure out how to make this configurable per project.
-;; (setq-default flycheck-disabled-checkers
-;;  (append flycheck-disabled-checkers
-;;    '(javascript-eslint)))
+(add-hook 'js-mode-hook #'lsp)
 
 ;; Typescript stuff
 

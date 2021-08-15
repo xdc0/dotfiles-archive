@@ -13,8 +13,8 @@
 (require 'projectile)
 
 (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile)
-(define-key evil-normal-state-map (kbd "M-.") 'tern-find-definition)
-(define-key evil-normal-state-map (kbd "M-,") 'tern-pop-find-definition)
+(define-key evil-normal-state-map (kbd "M-.") 'xref-find-definitions)
+(define-key evil-normal-state-map (kbd "M-,") 'xref-pop-marker-stack)
 (define-key evil-visual-state-map (kbd "TAB") 'indent-region)
 
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
